@@ -1,0 +1,2421 @@
+{
+    "type": "database",
+    "name": "clashdb",
+    "objects": [
+        {
+            "type": "table",
+            "database": null,
+            "name": "Edificaciones",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE Edificaciones (IDEdificacion INT (2) PRIMARY KEY UNIQUE NOT NULL, NombreEdificacion VARCHAR (100) UNIQUE NOT NULL, NivelMax INT (2) NOT NULL, \"Capacidad\t\" INT (3) NOT NULL, CantidadMax INT (3) NOT NULL, TipoEdificio INT (1) NOT NULL REFERENCES TipoEdificacion (IDTipoEdificacion) MATCH SIMPLE)",
+            "columns": [
+                {
+                    "name": "IDEdificacion",
+                    "type": "INT",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "NombreEdificacion",
+                    "type": "VARCHAR",
+                    "constraints": [
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "NivelMax",
+                    "type": "INT",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "Capacidad\t",
+                    "type": "INT",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "CantidadMax",
+                    "type": "INT",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "TipoEdificio",
+                    "type": "INT",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES TipoEdificacion (IDTipoEdificacion) MATCH SIMPLE"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    20,
+                    "campamento",
+                    11,
+                    240,
+                    4,
+                    1
+                ],
+                [
+                    1,
+                    "Cuartel",
+                    10,
+                    480,
+                    4,
+                    3
+                ],
+                [
+                    2,
+                    "Mina de oro",
+                    11,
+                    4900,
+                    7,
+                    3
+                ],
+                [
+                    3,
+                    "laboratorio",
+                    8,
+                    1,
+                    1,
+                    3
+                ],
+                [
+                    4,
+                    "recolector de elixir",
+                    11,
+                    4900,
+                    7,
+                    3
+                ],
+                [
+                    5,
+                    "cuartel oscuro",
+                    6,
+                    480,
+                    2,
+                    3
+                ],
+                [
+                    6,
+                    "almacen de oro",
+                    11,
+                    1750000,
+                    4,
+                    1
+                ],
+                [
+                    7,
+                    "almacen de elixir",
+                    11,
+                    1750000,
+                    4,
+                    1
+                ],
+                [
+                    8,
+                    "almacen de elixir oscuro",
+                    6,
+                    180000,
+                    3,
+                    1
+                ],
+                [
+                    9,
+                    "extractor de elixir oscuro",
+                    6,
+                    120,
+                    3,
+                    3
+                ],
+                [
+                    10,
+                    "muros",
+                    11,
+                    0,
+                    275,
+                    2
+                ],
+                [
+                    11,
+                    "ayuntamiento",
+                    10,
+                    1500000,
+                    1,
+                    1
+                ],
+                [
+                    12,
+                    "castillo del clan",
+                    6,
+                    35,
+                    1,
+                    2
+                ],
+                [
+                    13,
+                    "cañones",
+                    12,
+                    100,
+                    6,
+                    2
+                ],
+                [
+                    14,
+                    "torre de arqueras",
+                    12,
+                    80,
+                    7,
+                    2
+                ],
+                [
+                    15,
+                    "torre de mago",
+                    8,
+                    50,
+                    4,
+                    2
+                ],
+                [
+                    16,
+                    "defensa aerea",
+                    8,
+                    173,
+                    5,
+                    2
+                ],
+                [
+                    17,
+                    "mortero",
+                    8,
+                    15,
+                    4,
+                    2
+                ],
+                [
+                    18,
+                    "torre tesla",
+                    7,
+                    99,
+                    4,
+                    2
+                ],
+                [
+                    19,
+                    "ballestas",
+                    4,
+                    95,
+                    3,
+                    2
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "EdifNivelCantidad",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE EdifNivelCantidad (IDEdificacion INTEGER REFERENCES TipoEdificacion (IDTipoEdificacion) MATCH SIMPLE NOT NULL, IDTipoNivel INTEGER NOT NULL, MaxCantidad INTEGER NOT NULL)",
+            "columns": [
+                {
+                    "name": "IDEdificacion",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES TipoEdificacion (IDTipoEdificacion) MATCH SIMPLE "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "IDTipoNivel",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "MaxCantidad",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    1,
+                    4
+                ],
+                [
+                    1,
+                    2,
+                    4
+                ],
+                [
+                    1,
+                    3,
+                    3
+                ],
+                [
+                    1,
+                    4,
+                    3
+                ],
+                [
+                    1,
+                    5,
+                    3
+                ],
+                [
+                    1,
+                    6,
+                    2
+                ],
+                [
+                    1,
+                    7,
+                    2
+                ],
+                [
+                    1,
+                    8,
+                    2
+                ],
+                [
+                    1,
+                    9,
+                    1
+                ],
+                [
+                    1,
+                    10,
+                    1
+                ],
+                [
+                    2,
+                    1,
+                    4
+                ],
+                [
+                    2,
+                    2,
+                    4
+                ],
+                [
+                    2,
+                    3,
+                    3
+                ],
+                [
+                    2,
+                    4,
+                    3
+                ],
+                [
+                    2,
+                    5,
+                    3
+                ],
+                [
+                    2,
+                    6,
+                    2
+                ],
+                [
+                    2,
+                    7,
+                    2
+                ],
+                [
+                    2,
+                    8,
+                    2
+                ],
+                [
+                    2,
+                    9,
+                    1
+                ],
+                [
+                    2,
+                    10,
+                    1
+                ],
+                [
+                    3,
+                    1,
+                    4
+                ],
+                [
+                    3,
+                    2,
+                    4
+                ],
+                [
+                    3,
+                    3,
+                    3
+                ],
+                [
+                    3,
+                    4,
+                    3
+                ],
+                [
+                    3,
+                    5,
+                    3
+                ],
+                [
+                    3,
+                    6,
+                    2
+                ],
+                [
+                    3,
+                    7,
+                    2
+                ],
+                [
+                    3,
+                    8,
+                    1
+                ],
+                [
+                    3,
+                    9,
+                    1
+                ],
+                [
+                    3,
+                    10,
+                    1
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "Ejercitos",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE Ejercitos (IdEjercito INTEGER PRIMARY KEY NOT NULL UNIQUE, NombreEjercito STRING (25) NOT NULL, EspacioVivienda INTEGER NOT NULL, VelocidadAtaque DECIMAL NOT NULL, ObjetivoPreferido STRING (25) NOT NULL, TipoAtaque STRING (25) NOT NULL)",
+            "columns": [
+                {
+                    "name": "IdEjercito",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE"
+                        }
+                    ]
+                },
+                {
+                    "name": "NombreEjercito",
+                    "type": "STRING",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "EspacioVivienda",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "VelocidadAtaque",
+                    "type": "DECIMAL",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "ObjetivoPreferido",
+                    "type": "STRING",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "TipoAtaque",
+                    "type": "STRING",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "Barbaro",
+                    1,
+                    1,
+                    "Ninguno",
+                    "Cuerpo a cuerpo"
+                ],
+                [
+                    2,
+                    "Arquera",
+                    1,
+                    1,
+                    "Ninguno",
+                    "A distancia"
+                ],
+                [
+                    3,
+                    "Gigante",
+                    5,
+                    2,
+                    "Defensas",
+                    "Cuerpo a cuerpo"
+                ],
+                [
+                    4,
+                    "Duende",
+                    1,
+                    1,
+                    "Recursos",
+                    "Cuerpo a cuerpo"
+                ],
+                [
+                    5,
+                    "Rompemuros",
+                    2,
+                    1,
+                    "Defensas",
+                    "Cuerpo a cuerpo"
+                ],
+                [
+                    6,
+                    "Globo Aerostatico",
+                    5,
+                    3,
+                    "Defensas",
+                    "A distancia"
+                ],
+                [
+                    7,
+                    "Mago",
+                    4,
+                    1.5,
+                    "Ninguno",
+                    "A distancia"
+                ],
+                [
+                    8,
+                    "Curandera",
+                    14,
+                    0.7,
+                    "Ejercito",
+                    "A distancia"
+                ],
+                [
+                    9,
+                    "Dragon",
+                    20,
+                    1.5,
+                    "Ninguno",
+                    "A distancia"
+                ],
+                [
+                    10,
+                    "PEKKA",
+                    16,
+                    1.8,
+                    "Ninguno",
+                    "Cuerpo a cuerpo"
+                ],
+                [
+                    11,
+                    "Bebe Dragon",
+                    10,
+                    1,
+                    "Ninguno",
+                    "A distancia"
+                ],
+                [
+                    12,
+                    "Minero",
+                    6,
+                    1.7,
+                    "Ninguno",
+                    "Cuerpo a cuerpo"
+                ],
+                [
+                    13,
+                    "Dragon Electrico",
+                    30,
+                    3.5,
+                    "Ninguno",
+                    "A distancia"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "HistorialBatallas",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE HistorialBatallas (IdUsurioAtaca INTEGER NOT NULL REFERENCES Usuarios (ID) MATCH SIMPLE, IdUsuarioDefiende INTEGER REFERENCES Usuarios (ID) MATCH SIMPLE NOT NULL, TiempoDuracionAtaque TIME NOT NULL, FechaBatalla DATETIME NOT NULL, CantEjercitoAtaque BIGINT (3) NOT NULL, TipoEjercitoAtaque INTEGER NOT NULL REFERENCES Ejercitos (IdEjercito) MATCH SIMPLE, NivelEjercitoAtaque INTEGER NOT NULL REFERENCES TipoNivelEjercito (NivelEjercito) MATCH SIMPLE, CantEjercitoDefensa INTEGER (3) NOT NULL, TipoEjercitoDefensa INTEGER REFERENCES Ejercitos (IdEjercito) MATCH SIMPLE NOT NULL, NivelEjercitoDefensa INTEGER NOT NULL REFERENCES TipoNivelEjercito (NivelEjercito) MATCH SIMPLE, PorcentajeDaño DECIMAL NOT NULL, CantRecursosSustraidos BIGINT (8) NOT NULL)",
+            "columns": [
+                {
+                    "name": "IdUsurioAtaca",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES Usuarios (ID) MATCH SIMPLE"
+                        }
+                    ]
+                },
+                {
+                    "name": "IdUsuarioDefiende",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES Usuarios (ID) MATCH SIMPLE "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "TiempoDuracionAtaque",
+                    "type": "TIME",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "FechaBatalla",
+                    "type": "DATETIME",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "CantEjercitoAtaque",
+                    "type": "BIGINT",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "TipoEjercitoAtaque",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES Ejercitos (IdEjercito) MATCH SIMPLE"
+                        }
+                    ]
+                },
+                {
+                    "name": "NivelEjercitoAtaque",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES TipoNivelEjercito (NivelEjercito) MATCH SIMPLE"
+                        }
+                    ]
+                },
+                {
+                    "name": "CantEjercitoDefensa",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "TipoEjercitoDefensa",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES Ejercitos (IdEjercito) MATCH SIMPLE "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "NivelEjercitoDefensa",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES TipoNivelEjercito (NivelEjercito) MATCH SIMPLE"
+                        }
+                    ]
+                },
+                {
+                    "name": "PorcentajeDaño",
+                    "type": "DECIMAL",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "CantRecursosSustraidos",
+                    "type": "BIGINT",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "InventarioUsuario",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE InventarioUsuario (IdUsuario INTEGER NOT NULL REFERENCES Usuarios (ID) MATCH SIMPLE, IDTipoNivelUsr INTEGER REFERENCES TipoNivelUsuario (IDTipoNivelUsr) MATCH SIMPLE NOT NULL, IDEdificacion INTEGER NOT NULL REFERENCES Edificaciones (IDEdificacion) MATCH SIMPLE, IDNivelEdificacion INTEGER NOT NULL REFERENCES EdifNivelCantidad (IDTipoNivel) MATCH SIMPLE, CantEdificios BIGINT (3) NOT NULL, IdEjercito INTEGER REFERENCES Ejercitos (IdEjercito) MATCH SIMPLE NOT NULL, NivelEjercito INTEGER NOT NULL REFERENCES TipoNivelEjercito (NivelEjercito) MATCH SIMPLE, CantEjercito INTEGER (3) NOT NULL)",
+            "columns": [
+                {
+                    "name": "IdUsuario",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES Usuarios (ID) MATCH SIMPLE"
+                        }
+                    ]
+                },
+                {
+                    "name": "IDTipoNivelUsr",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES TipoNivelUsuario (IDTipoNivelUsr) MATCH SIMPLE "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "IDEdificacion",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES Edificaciones (IDEdificacion) MATCH SIMPLE"
+                        }
+                    ]
+                },
+                {
+                    "name": "IDNivelEdificacion",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES EdifNivelCantidad (IDTipoNivel) MATCH SIMPLE"
+                        }
+                    ]
+                },
+                {
+                    "name": "CantEdificios",
+                    "type": "BIGINT",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "IdEjercito",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES Ejercitos (IdEjercito) MATCH SIMPLE "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "NivelEjercito",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES TipoNivelEjercito (NivelEjercito) MATCH SIMPLE"
+                        }
+                    ]
+                },
+                {
+                    "name": "CantEjercito",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "TipoEdificacion",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE TipoEdificacion\t(\n    IDTipoEdificacion\tINTEGER      PRIMARY KEY\n                                UNIQUE\n                                NOT NULL,\n    TipoEdificacion VARCHAR (30) UNIQUE\n                                NOT NULL\n)",
+            "columns": [
+                {
+                    "name": "IDTipoEdificacion",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY\n                                "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE\n                                "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "TipoEdificacion",
+                    "type": "VARCHAR",
+                    "constraints": [
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE\n                                "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL\n"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "Almacenamiento"
+                ],
+                [
+                    2,
+                    "Defensa"
+                ],
+                [
+                    3,
+                    "Produccion"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "TipoNivelEjercito",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE TipoNivelEjercito (IdEjercito INTEGER NOT NULL REFERENCES Ejercitos (IdEjercito) MATCH SIMPLE, NivelEjercito INTEGER NOT NULL, DestruccionPorSegundo INTEGER NOT NULL, VidaEjercito BIGINT NOT NULL, CostoEntreamiento BIGINT NOT NULL, CostoInvestigacion BIGINT (10) NOT NULL, TiempoInvestigacion BIGINT NOT NULL, NivelLaboratorio INTEGER NOT NULL)",
+            "columns": [
+                {
+                    "name": "IdEjercito",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES Ejercitos (IdEjercito) MATCH SIMPLE"
+                        }
+                    ]
+                },
+                {
+                    "name": "NivelEjercito",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "DestruccionPorSegundo",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "VidaEjercito",
+                    "type": "BIGINT",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "CostoEntreamiento",
+                    "type": "BIGINT",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "CostoInvestigacion",
+                    "type": "BIGINT",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "TiempoInvestigacion",
+                    "type": "BIGINT",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "NivelLaboratorio",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    1,
+                    8,
+                    45,
+                    15,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    1,
+                    2,
+                    11,
+                    54,
+                    30,
+                    20000,
+                    2,
+                    1
+                ],
+                [
+                    1,
+                    3,
+                    14,
+                    65,
+                    60,
+                    60000,
+                    5,
+                    3
+                ],
+                [
+                    1,
+                    4,
+                    18,
+                    85,
+                    100,
+                    200000,
+                    12,
+                    5
+                ],
+                [
+                    1,
+                    5,
+                    23,
+                    105,
+                    150,
+                    650000,
+                    24,
+                    6
+                ],
+                [
+                    1,
+                    6,
+                    26,
+                    125,
+                    200,
+                    1400000,
+                    36,
+                    7
+                ],
+                [
+                    1,
+                    7,
+                    30,
+                    160,
+                    250,
+                    2500000,
+                    48,
+                    8
+                ],
+                [
+                    1,
+                    8,
+                    34,
+                    205,
+                    300,
+                    4000000,
+                    60,
+                    9
+                ],
+                [
+                    1,
+                    9,
+                    38,
+                    230,
+                    350,
+                    8000000,
+                    240,
+                    10
+                ],
+                [
+                    1,
+                    10,
+                    42,
+                    250,
+                    400,
+                    15000000,
+                    336,
+                    12
+                ],
+                [
+                    2,
+                    1,
+                    7,
+                    20,
+                    30,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    2,
+                    2,
+                    9,
+                    23,
+                    60,
+                    30000,
+                    3,
+                    1
+                ],
+                [
+                    2,
+                    3,
+                    12,
+                    28,
+                    120,
+                    80000,
+                    6,
+                    3
+                ],
+                [
+                    2,
+                    4,
+                    16,
+                    33,
+                    200,
+                    300000,
+                    12,
+                    5
+                ],
+                [
+                    2,
+                    5,
+                    20,
+                    40,
+                    300,
+                    800000,
+                    24,
+                    6
+                ],
+                [
+                    2,
+                    6,
+                    22,
+                    44,
+                    400,
+                    2000000,
+                    36,
+                    7
+                ],
+                [
+                    2,
+                    7,
+                    25,
+                    48,
+                    500,
+                    3000000,
+                    72,
+                    8
+                ],
+                [
+                    2,
+                    8,
+                    28,
+                    52,
+                    600,
+                    4500000,
+                    120,
+                    9
+                ],
+                [
+                    2,
+                    9,
+                    31,
+                    56,
+                    700,
+                    9000000,
+                    252,
+                    10
+                ],
+                [
+                    2,
+                    10,
+                    34,
+                    60,
+                    800,
+                    15500000,
+                    336,
+                    12
+                ],
+                [
+                    3,
+                    1,
+                    11,
+                    300,
+                    150,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    3,
+                    2,
+                    14,
+                    360,
+                    100,
+                    40000,
+                    4,
+                    2
+                ],
+                [
+                    3,
+                    3,
+                    19,
+                    450,
+                    750,
+                    150000,
+                    8,
+                    4
+                ],
+                [
+                    3,
+                    4,
+                    24,
+                    600,
+                    1500,
+                    500000,
+                    12,
+                    5
+                ],
+                [
+                    3,
+                    5,
+                    31,
+                    800,
+                    2250,
+                    1200000,
+                    24,
+                    6
+                ],
+                [
+                    3,
+                    6,
+                    43,
+                    1100,
+                    3000,
+                    2000000,
+                    48,
+                    7
+                ],
+                [
+                    3,
+                    7,
+                    50,
+                    1300,
+                    3500,
+                    3500000,
+                    96,
+                    8
+                ],
+                [
+                    3,
+                    8,
+                    57,
+                    1500,
+                    4000,
+                    5000000,
+                    192,
+                    9
+                ],
+                [
+                    3,
+                    9,
+                    64,
+                    1850,
+                    4500,
+                    9000000,
+                    312,
+                    10
+                ],
+                [
+                    3,
+                    10,
+                    72,
+                    2000,
+                    5000,
+                    13000000,
+                    360,
+                    11
+                ],
+                [
+                    4,
+                    1,
+                    11,
+                    25,
+                    25,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    4,
+                    2,
+                    14,
+                    30,
+                    40,
+                    45000,
+                    5,
+                    1
+                ],
+                [
+                    4,
+                    3,
+                    19,
+                    36,
+                    60,
+                    175000,
+                    9,
+                    3
+                ],
+                [
+                    4,
+                    4,
+                    24,
+                    50,
+                    80,
+                    500000,
+                    12,
+                    5
+                ],
+                [
+                    4,
+                    5,
+                    32,
+                    65,
+                    100,
+                    1200000,
+                    24,
+                    6
+                ],
+                [
+                    4,
+                    6,
+                    42,
+                    80,
+                    150,
+                    2000000,
+                    36,
+                    7
+                ],
+                [
+                    4,
+                    7,
+                    52,
+                    105,
+                    200,
+                    3500000,
+                    96,
+                    8
+                ],
+                [
+                    4,
+                    8,
+                    62,
+                    126,
+                    250,
+                    9000000,
+                    288,
+                    10
+                ],
+                [
+                    5,
+                    1,
+                    6,
+                    20,
+                    600,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    5,
+                    2,
+                    10,
+                    24,
+                    800,
+                    100000,
+                    6,
+                    2
+                ],
+                [
+                    5,
+                    3,
+                    15,
+                    29,
+                    1000,
+                    250000,
+                    12,
+                    4
+                ],
+                [
+                    5,
+                    4,
+                    20,
+                    35,
+                    1200,
+                    600000,
+                    18,
+                    5
+                ],
+                [
+                    5,
+                    5,
+                    43,
+                    53,
+                    1400,
+                    1200000,
+                    24,
+                    6
+                ],
+                [
+                    5,
+                    6,
+                    55,
+                    72,
+                    1600,
+                    3000000,
+                    60,
+                    8
+                ],
+                [
+                    5,
+                    7,
+                    66,
+                    82,
+                    1800,
+                    6000000,
+                    120,
+                    9
+                ],
+                [
+                    5,
+                    8,
+                    75,
+                    92,
+                    2000,
+                    10500000,
+                    240,
+                    10
+                ],
+                [
+                    5,
+                    9,
+                    86,
+                    112,
+                    2200,
+                    13000000,
+                    348,
+                    11
+                ],
+                [
+                    5,
+                    10,
+                    94,
+                    130,
+                    2400,
+                    16000000,
+                    384,
+                    12
+                ],
+                [
+                    6,
+                    1,
+                    25,
+                    150,
+                    1750,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    6,
+                    2,
+                    32,
+                    180,
+                    2250,
+                    125000,
+                    8,
+                    2
+                ],
+                [
+                    6,
+                    3,
+                    48,
+                    216,
+                    2750,
+                    400000,
+                    12,
+                    4
+                ],
+                [
+                    6,
+                    4,
+                    72,
+                    280,
+                    3500,
+                    800000,
+                    18,
+                    5
+                ],
+                [
+                    6,
+                    5,
+                    108,
+                    390,
+                    4000,
+                    1500000,
+                    24,
+                    6
+                ],
+                [
+                    6,
+                    6,
+                    162,
+                    545,
+                    4500,
+                    2750000,
+                    60,
+                    7
+                ],
+                [
+                    6,
+                    7,
+                    198,
+                    690,
+                    5000,
+                    6500000,
+                    180,
+                    9
+                ],
+                [
+                    6,
+                    8,
+                    236,
+                    840,
+                    5500,
+                    11000000,
+                    324,
+                    10
+                ],
+                [
+                    6,
+                    9,
+                    256,
+                    940,
+                    6000,
+                    14000000,
+                    384,
+                    11
+                ],
+                [
+                    6,
+                    10,
+                    276,
+                    1040,
+                    6500,
+                    18000000,
+                    432,
+                    12
+                ],
+                [
+                    7,
+                    1,
+                    50,
+                    75,
+                    1000,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    7,
+                    2,
+                    70,
+                    90,
+                    1400,
+                    120000,
+                    8,
+                    3
+                ],
+                [
+                    7,
+                    3,
+                    90,
+                    108,
+                    1800,
+                    320000,
+                    12,
+                    4
+                ],
+                [
+                    7,
+                    4,
+                    125,
+                    135,
+                    2200,
+                    620000,
+                    18,
+                    5
+                ],
+                [
+                    7,
+                    5,
+                    170,
+                    165,
+                    2600,
+                    1200000,
+                    24,
+                    6
+                ],
+                [
+                    7,
+                    6,
+                    185,
+                    180,
+                    3000,
+                    2200000,
+                    48,
+                    7
+                ],
+                [
+                    7,
+                    7,
+                    200,
+                    195,
+                    3400,
+                    4200000,
+                    96,
+                    8
+                ],
+                [
+                    7,
+                    8,
+                    215,
+                    210,
+                    3800,
+                    7200000,
+                    180,
+                    9
+                ],
+                [
+                    7,
+                    9,
+                    230,
+                    230,
+                    4200,
+                    9200000,
+                    300,
+                    10
+                ],
+                [
+                    7,
+                    10,
+                    245,
+                    250,
+                    4600,
+                    14200000,
+                    348,
+                    11
+                ],
+                [
+                    8,
+                    1,
+                    36,
+                    500,
+                    5000,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    8,
+                    2,
+                    48,
+                    700,
+                    6000,
+                    450000,
+                    12,
+                    5
+                ],
+                [
+                    8,
+                    3,
+                    60,
+                    900,
+                    8000,
+                    900000,
+                    24,
+                    6
+                ],
+                [
+                    8,
+                    4,
+                    66,
+                    1200,
+                    10000,
+                    2700000,
+                    48,
+                    7
+                ],
+                [
+                    8,
+                    5,
+                    72,
+                    1500,
+                    14000,
+                    6000000,
+                    240,
+                    9
+                ],
+                [
+                    8,
+                    6,
+                    72,
+                    1600,
+                    17000,
+                    13000000,
+                    336,
+                    11
+                ],
+                [
+                    8,
+                    7,
+                    72,
+                    1700,
+                    20000,
+                    17000000,
+                    408,
+                    12
+                ],
+                [
+                    9,
+                    1,
+                    140,
+                    1900,
+                    10000,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    9,
+                    2,
+                    160,
+                    2100,
+                    12000,
+                    1750000,
+                    36,
+                    5
+                ],
+                [
+                    9,
+                    3,
+                    180,
+                    2300,
+                    14000,
+                    2500000,
+                    72,
+                    6
+                ],
+                [
+                    9,
+                    4,
+                    210,
+                    2700,
+                    16000,
+                    4000000,
+                    120,
+                    7
+                ],
+                [
+                    9,
+                    5,
+                    240,
+                    3100,
+                    18000,
+                    6000000,
+                    168,
+                    8
+                ],
+                [
+                    9,
+                    6,
+                    270,
+                    3400,
+                    20000,
+                    8000000,
+                    216,
+                    9
+                ],
+                [
+                    9,
+                    7,
+                    310,
+                    3900,
+                    22000,
+                    10000000,
+                    336,
+                    10
+                ],
+                [
+                    9,
+                    8,
+                    330,
+                    4200,
+                    24000,
+                    15000000,
+                    384,
+                    11
+                ],
+                [
+                    9,
+                    9,
+                    350,
+                    4500,
+                    26000,
+                    18500000,
+                    432,
+                    12
+                ],
+                [
+                    10,
+                    1,
+                    260,
+                    3000,
+                    14000,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    10,
+                    2,
+                    290,
+                    3400,
+                    16000,
+                    1200000,
+                    12,
+                    6
+                ],
+                [
+                    10,
+                    3,
+                    320,
+                    3800,
+                    18000,
+                    1800000,
+                    24,
+                    6
+                ],
+                [
+                    10,
+                    4,
+                    360,
+                    4300,
+                    20000,
+                    2800000,
+                    48,
+                    7
+                ],
+                [
+                    10,
+                    5,
+                    410,
+                    4800,
+                    22500,
+                    3800000,
+                    96,
+                    8
+                ],
+                [
+                    10,
+                    6,
+                    470,
+                    5300,
+                    25000,
+                    5000000,
+                    132,
+                    8
+                ],
+                [
+                    10,
+                    7,
+                    540,
+                    5700,
+                    27500,
+                    7500000,
+                    204,
+                    9
+                ],
+                [
+                    10,
+                    8,
+                    610,
+                    6300,
+                    30000,
+                    11000000,
+                    336,
+                    10
+                ],
+                [
+                    10,
+                    9,
+                    680,
+                    6700,
+                    32500,
+                    14000000,
+                    360,
+                    11
+                ],
+                [
+                    11,
+                    1,
+                    75,
+                    1200,
+                    5000,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    11,
+                    2,
+                    85,
+                    1300,
+                    6000,
+                    2500000,
+                    72,
+                    7
+                ],
+                [
+                    11,
+                    3,
+                    95,
+                    1400,
+                    7000,
+                    3500000,
+                    120,
+                    8
+                ],
+                [
+                    11,
+                    4,
+                    105,
+                    1500,
+                    8000,
+                    4500000,
+                    168,
+                    8
+                ],
+                [
+                    11,
+                    5,
+                    115,
+                    1600,
+                    9000,
+                    7000000,
+                    216,
+                    9
+                ],
+                [
+                    11,
+                    6,
+                    125,
+                    1700,
+                    10000,
+                    9000000,
+                    288,
+                    10
+                ],
+                [
+                    11,
+                    7,
+                    135,
+                    1800,
+                    11000,
+                    15000000,
+                    372,
+                    11
+                ],
+                [
+                    11,
+                    8,
+                    145,
+                    1900,
+                    12000,
+                    17000000,
+                    396,
+                    12
+                ],
+                [
+                    12,
+                    1,
+                    80,
+                    550,
+                    4200,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    12,
+                    2,
+                    88,
+                    610,
+                    4800,
+                    3500000,
+                    72,
+                    8
+                ],
+                [
+                    12,
+                    3,
+                    96,
+                    670,
+                    5200,
+                    4500000,
+                    120,
+                    8
+                ],
+                [
+                    12,
+                    4,
+                    104,
+                    730,
+                    5600,
+                    6000000,
+                    180,
+                    9
+                ],
+                [
+                    12,
+                    5,
+                    112,
+                    800,
+                    6000,
+                    8000000,
+                    252,
+                    9
+                ],
+                [
+                    12,
+                    6,
+                    120,
+                    900,
+                    6400,
+                    10500000,
+                    336,
+                    10
+                ],
+                [
+                    12,
+                    7,
+                    128,
+                    1000,
+                    6800,
+                    14000000,
+                    372,
+                    11
+                ],
+                [
+                    12,
+                    8,
+                    136,
+                    1100,
+                    7200,
+                    17500000,
+                    408,
+                    12
+                ],
+                [
+                    13,
+                    1,
+                    240,
+                    3200,
+                    28000,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    13,
+                    2,
+                    270,
+                    3700,
+                    32000,
+                    9000000,
+                    240,
+                    9
+                ],
+                [
+                    13,
+                    3,
+                    300,
+                    4200,
+                    36000,
+                    11000000,
+                    336,
+                    10
+                ],
+                [
+                    13,
+                    4,
+                    330,
+                    4500,
+                    40000,
+                    16000000,
+                    384,
+                    11
+                ],
+                [
+                    13,
+                    5,
+                    360,
+                    4800,
+                    44000,
+                    19000000,
+                    432,
+                    12
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "TipoNivelUsuario",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE TipoNivelUsuario (\n    IDTipoNivelUsr       INTEGER       PRIMARY KEY\n                           UNIQUE\n                           NOT NULL,\n    NivelUsr    VARCHAR (10) UNIQUE\n                           NOT NULL\n)",
+            "columns": [
+                {
+                    "name": "IDTipoNivelUsr",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY\n                           "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE\n                           "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "NivelUsr",
+                    "type": "VARCHAR",
+                    "constraints": [
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE\n                           "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL\n"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "Titan"
+                ],
+                [
+                    2,
+                    "Campeones"
+                ],
+                [
+                    3,
+                    "Maestro"
+                ],
+                [
+                    4,
+                    "Cristal"
+                ],
+                [
+                    5,
+                    "Oro"
+                ],
+                [
+                    6,
+                    "Plata I"
+                ],
+                [
+                    8,
+                    "Plata II"
+                ],
+                [
+                    9,
+                    "Plata III"
+                ],
+                [
+                    10,
+                    "Bronce"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "Usuarios",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE Usuarios (ID INTEGER PRIMARY KEY UNIQUE NOT NULL, login VARCHAR (100) UNIQUE ON CONFLICT ROLLBACK NOT NULL, correo VARCHAR (100) UNIQUE NOT NULL, password VARCHAR (20) NOT NULL, level INT (2) NOT NULL REFERENCES TipoNivelUsuario (IDTipoNivelUsr) MATCH SIMPLE)",
+            "columns": [
+                {
+                    "name": "ID",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "login",
+                    "type": "VARCHAR",
+                    "constraints": [
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE ON CONFLICT ROLLBACK "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "correo",
+                    "type": "VARCHAR",
+                    "constraints": [
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "password",
+                    "type": "VARCHAR",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "level",
+                    "type": "INT",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES TipoNivelUsuario (IDTipoNivelUsr) MATCH SIMPLE"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "user1",
+                    "pepito_perez@hotmail.com",
+                    "@TM@v6Xtf",
+                    3
+                ],
+                [
+                    2,
+                    "player",
+                    "jugador@gmail.com",
+                    "22v27dA#EoCk",
+                    4
+                ],
+                [
+                    3,
+                    "pirtayudru",
+                    "pirtayudru@vusra.com",
+                    "auXaIoUz^o9a",
+                    1
+                ],
+                [
+                    4,
+                    "carolinamw8",
+                    "carolina+ppw7dpxmw8@gmail.com",
+                    "RYbg3l3M*DdG",
+                    10
+                ],
+                [
+                    5,
+                    "larkin11",
+                    "emiliano.larkin11@hotmail.com",
+                    "U4a*9^@#",
+                    7
+                ],
+                [
+                    6,
+                    "nedra35",
+                    "nedra35@gmail.com",
+                    "RSQvhSK6",
+                    8
+                ],
+                [
+                    7,
+                    "vilma_bogi",
+                    "vilma_bogisich43@gmail.com",
+                    "hTKuyX2b",
+                    3
+                ],
+                [
+                    8,
+                    "darian98",
+                    "darian98@gmail.com",
+                    "F8TDuB8x",
+                    7
+                ],
+                [
+                    9,
+                    "breanne44",
+                    "breanne44@yahoo.com",
+                    "nYupfuBF",
+                    2
+                ],
+                [
+                    10,
+                    "philip_mit",
+                    "philip_mitchell@gmail.com",
+                    "rGC2AXME",
+                    3
+                ]
+            ]
+        }
+    ]
+}
